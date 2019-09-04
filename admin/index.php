@@ -107,7 +107,7 @@
                                                         echo "<input type='checkbox' value= $coupon_id name='onoffswitch' class='onoffswitch-checkbox switch-private-checkbox' id= $coupon_id $checked>";
                                                         echo "<label class='onoffswitch-label' for= $coupon_id > <span class='onoffswitch-inner'></span> <span class='onoffswitch-switch'></span> </label>";
                                                         echo "</div> ";    
-                                                    }
+                                                }
                                             ?> 
                                         </td>
                                         <td>
@@ -121,7 +121,10 @@
                                     ?>
                                 </tbody>
                             </table>
-                          
+                            <!-- <div class ="paging" id = "pagination-insert"> </div> -->
+                                    <!-- </div> -->
+
+                          </div>
                         </div>
                     </div>
                 </div>
@@ -198,7 +201,7 @@
                                 <div class="col-sm-6">
                                     <div class="form-element val-change">
                                         <label>Discount Value</label>
-                                        <input type="number" onkeypress="return isNumber(event)" name="" id="d-val" class="w-100 "  min="0" max="100" id="discount_value"  required="required"/>
+                                        <input type="number" onkeypress="return isNumber(event)" name="" id="d-val" class="w-100"  min="0" max="100" id="discount_value"  required="required"/>
                                         <span>%</span>
                                     </div>
                                 </div>
@@ -289,10 +292,24 @@ $('#redeem').keyup(function(e){
         }
     );
 
+    waitForElement('#campaigntable_wrapper',function(){
+    // $('#campaigntable_wrapper').css("text-align","center","margin","0,auto");
+    // $('#campaigntable_wrapper').css("margin",0,"auto");
+    // $('#campaigntable_wrapper').addClass('center_page');
+   var pagediv =  "<div class ='paging' id = 'pagination-insert'> </div>";
+   $('#campaigntable_wrapper').append(pagediv);
+    });
+
 
     waitForElement('#campaigntable_length',function(){
     $('#campaigntable_length').css({ display: "none" });
-});
+    });
+
+    waitForElement('#campaigntable_paginate',function(){
+        // $('#campaigntable_paginate').css("margin", "0,auto");
+        // $('#campaigntable_paginate').addClass('center_page');
+    });
+
             $('#coupon_code').keypress(function(e) { var regex = new RegExp("^[a-zA-Z0-9]+$"); var str = String.fromCharCode(!e.charCode ? e.which : e.charCode); if (regex.test(str)) { return true; } e.preventDefault(); return false; });
             $('.pr-text').keypress(function(e) { var regex = new RegExp("^[a-zA-Z0-9]+$"); var str = String.fromCharCode(!e.charCode ? e.which : e.charCode); if (regex.test(str)) { return true; } e.preventDefault(); return false; });
            
@@ -410,6 +427,7 @@ $('#redeem').keyup(function(e){
      }, false);
  })();
 
+
   function waitForElement(elementPath, callBack){
 	window.setTimeout(function(){
 	if($(elementPath).length){
@@ -421,9 +439,9 @@ $('#redeem').keyup(function(e){
 }
 
 
-waitForElement('#campaigntable_paginate',function(){
+waitForElement('#pagination-insert',function(){
 var pagination  = $('#campaigntable_paginate');
-$('#campaigntable_wrapper').append(pagination);
+$('#pagination-insert').append(pagination);
 
 });
 

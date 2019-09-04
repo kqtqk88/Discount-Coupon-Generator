@@ -288,6 +288,17 @@ function saveCampaignDetails() {
         });
     }
     $(document).ready(function() {
+
+        $('#d-val').on('input', function () {
+    
+            var value = $(this).val();
+            
+            if ((value !== '') && (value.indexOf('.') === -1)) {
+                
+                $(this).val(Math.max(Math.min(value, 100), -90));
+            }
+        });
+
         const url = window.location.href.toLowerCase();
         setTimezone();
         $('#save_details').click(function() {
@@ -305,9 +316,7 @@ function saveCampaignDetails() {
                   $('#d-val').css('border','1px solid red');
                 }
            
-         
                else {
-
                 saveCampaignDetails();
                 $('#createcampaign').modal().hide();
                 $("#modal .close").click();
@@ -319,6 +328,8 @@ function saveCampaignDetails() {
         $('#createcampaign .close').click(function() {
             $('#limitedoption').show();
             clearFields();
+            $('#msg').remove();
+
             //
           });
 
