@@ -20,9 +20,6 @@ function getDiscountValue(){
     var apiUrl = packagePath + '/get_discount.php';
     $.ajax({
         url: apiUrl,
-        headers: {
-            'Authorization': 'Bearer ' + token,
-        },
         method: 'POST',
         contentType: 'application/json',
         data: JSON.stringify(data),
@@ -31,10 +28,7 @@ function getDiscountValue(){
             if (discountDetails.result.length == 0) {
             }else{
                 couponname = discountDetails.result[0].CouponCode;
-                console.log(couponname);
                 coupondiscount = discountDetails.result[0].DiscountValue;  
-                console.log(coupondiscount);
-         
                 var couponspan = '<input type="hidden" class="coupon-msg" id="couponhidden"></span>';
                 $('.page-transaction-details').append(couponspan);
             }
@@ -74,8 +68,7 @@ function discount_orderDetails() {
     //3. get the admin fee
         var adminfee = $('.price-cal p:contains("Order Admin Fee")').text();
         var t_adminfee = adminfee.replace(/[^\d.-]/g, '');
-        console.log(t_adminfee);
-
+      
     var promo = '<p id = "amount"> </p>';
     $('.price-cal').append(promo);
     $('#amount').text('- ' + $('#currencyCode').val() + formatter.format(coupondiscount));
@@ -86,10 +79,9 @@ function discount_orderDetails() {
      var Total = parseFloat(t_subtotal) - total + parseFloat(t_delivery);
 
      waitForElement('.details-col .description h1',function(){
-     
-     var totalLabel = $('.description:contains("TOTAL ORDER PAYOUT") h1');
-    var test =  formatter.format(Total); 
-     totalLabel.text($('#currencyCode').val() + formatter.format(Total));
+        var totalLabel = $('.description:contains("TOTAL ORDER PAYOUT") h1');
+        var test =  formatter.format(Total); 
+        totalLabel.text($('#currencyCode').val() + formatter.format(Total));
    });
 })
   }

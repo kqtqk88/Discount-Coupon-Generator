@@ -32,8 +32,4 @@
    $id =  $marketplaceInfo['ID'];
    $url = $baseUrl . '/api/v2/marketplaces/';
    $result = callAPI("POST", $admin_token['access_token'], $url, $data);
-   error_log('tz saved.');
-   
    ?>
-   
-   

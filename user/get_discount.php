@@ -4,6 +4,7 @@ include 'admin_token.php';
 $contentBodyJson = file_get_contents('php://input');
 $content = json_decode($contentBodyJson, true);
 $invoice_number = $content['invoice_number'];
+error_log($invoice_number);
 $invoice_number = str_replace(' ', '', $invoice_number);
 
 $baseUrl = getMarketplaceBaseUrl();
@@ -19,8 +20,10 @@ $result = callAPI("GET", $admin_token['access_token'], $url, false);
 $orderId = $result['Orders'][0]['ID'];
 
 $coupon_details = array(array('Name' => 'OrderId', 'Value' => $orderId));
+
 $url =  $baseUrl . '/api/v2/plugins/'. getPackageID() .'/custom-tables/Orders';
 $couponDetails =  callAPI("POST", $admin_token['access_token'], $url, $coupon_details);
 echo json_encode(['result' => $couponDetails['Records']]);
+error_log('--- ' . json_encode($couponDetails['Records']));
 
 ?>

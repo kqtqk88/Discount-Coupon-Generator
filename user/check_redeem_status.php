@@ -34,4 +34,4 @@ $couponDetails =  callAPI("POST", $admin_token['access_token'], $url, $order_exi
 
         echo json_encode(['result' => $couponDetails['Records'][0]['Status']]);
     }
-    ?>
+?>

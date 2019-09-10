@@ -13,7 +13,7 @@ $content = json_decode($contentBodyJson, true);
 $order_guid = $content['order_guid'];
 
 //TODO:: Validate if the current ORDER ID exists, UPDATE ?? SAVE
-//========================================================================VALIDATE IF ORDER ID EXISTS=======================================================================
+//VALIDATE IF ORDER ID EXISTS
 $order_exists = array(array('Name' => 'OrderId', "Operator" => "in",'Value' => $order_guid));
 $url =  $baseUrl . '/api/v2/plugins/'. getPackageID() .'/custom-tables/Orders';
 $couponDetails =  callAPI("POST", $admin_token['access_token'], $url, $order_exists);
@@ -34,7 +34,6 @@ $couponDetails =  callAPI("POST", $admin_token['access_token'], $url, $order_exi
         $url =  $baseUrl . '/api/v2/plugins/'. getPackageID() .'/custom-tables/Coupon';
         $coupondetails1 =  callAPI("POST", $admin_token['access_token'], $url, $coupon_details);
 
-      
         echo json_encode(['result' => $coupondetails1['Records']]);
 
     }

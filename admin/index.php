@@ -96,7 +96,7 @@
                                                     echo "<td>" .  $date . "</td>";
                                                     echo "<td>" .  $coupon_code . "</td>";
                                                     echo  "<td>". $coupon_discount . '%' . "</td>";
-                                         echo "<td>";
+                                                    echo "<td>";
                                         ?>
 
                                             <?php
@@ -121,8 +121,6 @@
                                     ?>
                                 </tbody>
                             </table>
-                            <!-- <div class ="paging" id = "pagination-insert"> </div> -->
-                                    <!-- </div> -->
 
                           </div>
                         </div>
@@ -275,10 +273,8 @@ $('#redeem').keyup(function(e){
       }
     });
                                 
-        $(document).ready(function() {
+$(document).ready(function() {
         
-
-            
         $('#campaigntable').DataTable(
         {
         // "paging":   false,
@@ -293,26 +289,17 @@ $('#redeem').keyup(function(e){
     );
 
     waitForElement('#campaigntable_wrapper',function(){
-    // $('#campaigntable_wrapper').css("text-align","center","margin","0,auto");
-    // $('#campaigntable_wrapper').css("margin",0,"auto");
-    // $('#campaigntable_wrapper').addClass('center_page');
-   var pagediv =  "<div class ='paging' id = 'pagination-insert'> </div>";
-   $('#campaigntable_wrapper').append(pagediv);
+        var pagediv =  "<div class ='paging' id = 'pagination-insert'> </div>";
+        $('#campaigntable_wrapper').append(pagediv);
     });
-
 
     waitForElement('#campaigntable_length',function(){
-    $('#campaigntable_length').css({ display: "none" });
+         $('#campaigntable_length').css({ display: "none" });
     });
 
-    waitForElement('#campaigntable_paginate',function(){
-        // $('#campaigntable_paginate').css("margin", "0,auto");
-        // $('#campaigntable_paginate').addClass('center_page');
-    });
-
-            $('#coupon_code').keypress(function(e) { var regex = new RegExp("^[a-zA-Z0-9]+$"); var str = String.fromCharCode(!e.charCode ? e.which : e.charCode); if (regex.test(str)) { return true; } e.preventDefault(); return false; });
-            $('.pr-text').keypress(function(e) { var regex = new RegExp("^[a-zA-Z0-9]+$"); var str = String.fromCharCode(!e.charCode ? e.which : e.charCode); if (regex.test(str)) { return true; } e.preventDefault(); return false; });
-           
+    $('#coupon_code').keypress(function(e) { var regex = new RegExp("^[a-zA-Z0-9]+$"); var str = String.fromCharCode(!e.charCode ? e.which : e.charCode); if (regex.test(str)) { return true; } e.preventDefault(); return false; });
+    $('.pr-text').keypress(function(e) { var regex = new RegExp("^[a-zA-Z0-9]+$"); var str = String.fromCharCode(!e.charCode ? e.which : e.charCode); if (regex.test(str)) { return true; } e.preventDefault(); return false; });
+    
         });
 
         jQuery(window).bind('scroll', function() {
@@ -445,8 +432,8 @@ $('#pagination-insert').append(pagination);
 
 });
 
-        </script>
-         <script type="text/javascript" src="scripts/package.js"></script>
-         <script type="text/javascript" src="scripts/pagination.js"></script>
-         <script type="text/javascript" src="scripts/jquery.dataTables.js"></script>
-         <!-- end footer --> 
+</script>
+<script type="text/javascript" src="scripts/package.js"></script>
+<script type="text/javascript" src="scripts/pagination.js"></script>
+<script type="text/javascript" src="scripts/jquery.dataTables.js"></script>
+<!-- end footer --> 
